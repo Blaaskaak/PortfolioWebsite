@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MANUFACTURING</title>
+  <meta name="manufacturing" content="manufacturing skills" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;400;600;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- CMYK ANIMATION -->
+<div class="background">
+  <div class="grid cyan"></div>
+  <div class="grid magenta"></div>
+  <div class="grid yellow"></div>
+</div>
+
+  <nav>
+    <div class="left">
+      <a href="index.html">HOME</a>
+    </div>
+    <div class="right">
+      <a href="projects.html">PROJECTS</a>
+      <a href="manufacturing.html">MANUFACTURING</a>
+      <a href="endeavours.html">ENDEAVOURS</a>
+      <a href="about.html">ABOUT</a>
+    </div>
+  </nav>
+
+<main>
+
+<!------- INTRO TEXT  -------> 
+  <div class="intro-text-manufacturing">
+    <h1 class="manufacturing-header"></h1>
+    <p class="manufacturing-subheader">
+      Welcome to the Manufacturing Page. Here, I showcase a variety of skills I’ve developed, ranging from hands-on physical work and operating complex machinery, to using digital fabrication programs and visual design tools.
+    </p>
+  </div>
+
+  <div class="timeline">
+
+<!------- METALWORKING TEXT  -------> 
+
+    <div class="timeline-item right">
+      <div class="skill-images">
+      <img src="Images/MANUFACTURING/Bandsaw.webp">
+      <img src="Images/COEXIST/Milling1.webp" style="height: 100%; width: 100%;">
+      <img src="Images/MANUFACTURING/welding.webp">
+      </div>
+    <div class="skill-text">
+    <h3 class="skill-title">Metalworking</h3>
+    <p class="skill-description">I have experience in metalworking, using tools such as the lathe, milling machine, cutting equipment and MIG/TIG welding.</p>
+    </div>
+  </div>
+
+<!------- WOODWORKING TEXT  -------> 
+
+      <div class="timeline-item left">
+    <div class="skill-images">
+      <img src="Images/MANUFACTURING/ROUTING.webp">
+      <img src="Images/MANUFACTURING/IMG_9295 copy.webp">
+      <img src="Images/DAYBED/DAYBED4.webp">
+    </div>
+    <div class="skill-text">
+      <h3 class="skill-title">Woodworking</h3>
+      <p class="skill-description">I have experience in woodworking, using larger machines such as the table saw, band saw, planer, and routing table, as well as hand tools like chisels and hand planes.</p>
+    </div>
+  </div>
+
+<!------- DIGITAL FABRICATION TEXT  -------> 
+  <div class="timeline-item right digital-fab">
+    <div class="skill-images">
+      <img src="Images/DIGITAL FABRICATION/SOLIDWORKS1.webp">
+      <img src="Images/DIGITAL FABRICATION/ILLUSTRATOR.webp">
+      <img src="Images/DIGITAL FABRICATION/TOUCHDESIGNER1.webp">
+      <img src="Images/DIGITAL FABRICATION/PHOTOSHOP1.webp">
+    </div>
+    <div class="skill-text">
+      <h3 class="skill-title">Digital Fabrication & Visualisation</h3>
+      <p class="skill-description">
+  I have experience in programs such as SolidWorks, Rhino, Grasshopper and Cura Ultimaker for designing and prototyping. I also use the Arduino IDE and TouchDesigner for interactive projects, and Adobe Photoshop, Illustrator, and InDesign for visual communication. Additionally, I have basic skills in HTML and CSS, by coding and making this website.
+      </p>
+    </div>
+  </div>
+
+<!------- CNC MACHING TEXT  -------> 
+
+      <div class="timeline-item left">
+        <div class="skill-images">
+          <img src="Images/MANUFACTURING/HAAS1.webp">
+          <img src="Images/MANUFACTURING/HAAS2.webp">
+          <img src="Images/MANUFACTURING/HAAS3.webp" style="height: 100%;">
+        </div>
+        <div class="skill-text">
+          <h3 class="skill-title">Computer Aided Manufacturing</h3>
+          <p class="skill-description">I have experience with rapid prototyping techniques such as 3D printing and laser cutting. In addition to traditional milling and lathing, I have operated the HAAS CNC milling machine to manufacture precise aluminum components with extremely tight tolerances.”</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Nemo Anderson. All rights reserved.</p>
+  </footer>
+
+  <!-- CMYK Scroll Animation Script -->
+<script>
+  const cyan = document.querySelector('.cyan');
+  const magenta = document.querySelector('.magenta');
+  const yellow = document.querySelector('.yellow');
+
+  function updateGrid() {
+    const scrollY = window.scrollY;
+
+    // Parallax motion
+    cyan.style.backgroundPosition = `0px ${scrollY * 0.3}px`;
+    magenta.style.backgroundPosition = `0px ${scrollY * 0.5}px`;
+    yellow.style.backgroundPosition = `0px ${scrollY * 0.7}px`;
+
+    const t = scrollY * 0.005;
+
+    // Line thickness
+    const cyanBase = 4 * Math.max(0, Math.sin(t - Math.PI/2));
+    const magentaBase = 6 * Math.max(0, Math.sin(t * 1.333 - Math.PI/2 + Math.PI / 3));
+    const yellowBase = 8 * Math.max(0, Math.cos(t * 0.666 - Math.PI/2 - Math.PI / 6));
+
+    document.documentElement.style.setProperty('--cyan-line', `${cyanBase}px`);
+    document.documentElement.style.setProperty('--magenta-line', `${magentaBase}px`);
+    document.documentElement.style.setProperty('--yellow-line', `${yellowBase}px`);
+  }
+
+  window.addEventListener('scroll', updateGrid);
+  updateGrid();
+</script>
+
+</body>
+</html>

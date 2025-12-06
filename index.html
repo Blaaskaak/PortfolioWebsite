@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Nemo Anderson</title>
+  <meta name="description" content="Portfolio of Nemo Anderson" />
+
+  <!-- FONTS & ICONS -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQpGkSbNMW9ZKqD1wH9nR8KfUZV5N8R3n6U5YvXcQ5fQ2Yozq4n5pLQlrU+5l0wQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <!-- CMYK ANIMATION -->
+  <div class="background">
+    <div class="grid cyan"></div>
+    <div class="grid magenta"></div>
+    <div class="grid yellow"></div>
+  </div>
+
+  <!-- NAVIGATION BAR -->
+  <nav>
+    <div class="left">
+      <a href="index.html">HOME</a>
+    </div>
+
+    <div class="right">
+      <a href="projects.html">PROJECTS</a>
+      <a href="manufacturing.html">MANUFACTURING</a>
+      <a href="endeavours.html">ENDEAVOURS</a>
+      <a href="about.html">ABOUT</a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="sections">
+
+    <!-- PROJECTS -->
+    <section class="section-card" style="--card-top-offset: 0px;">
+      <a href="projects.html">
+        <img src="Images/COEXIST/Coexist4.webp" alt="Room Divider Project" loading="lazy" />
+      </a>
+      <h2>PROJECTS</h2>
+      <p>A collection of various projects I have worked on, highlighting both the creative process and final results.</p>
+    </section>
+
+    <!-- MANUFACTURING -->
+    <section class="section-card" style="--card-top-offset: 0px;">
+      <a href="manufacturing.html">
+        <img src="Images/MANUFACTURING/welding.webp" alt="Bandsaw manufacturing" loading="lazy" />
+      </a>
+      <h2>MANUFACTURING</h2>
+      <p>This is a collection of various manufacturing skills I have developed.</p>
+    </section>
+
+
+
+    <!-- ENDEAVOURS -->
+    <section class="section-card" style="--card-top-offset: 0px;">
+      <a href="endeavours.html">
+        <img src="Images/KOENRAAD/Koenraad1.webp" alt="Koenraad project" loading="lazy" />
+      </a>
+      <h2>ENDEAVOURS</h2>
+      <p>This section highlights various ideas, failures, dreams, and experiments -some finished, some works in progress.</p>
+    </section>
+
+        <!-- ABOUT -->
+    <section class="section-card" style="--card-top-offset: 0px;">
+      <a href="about.html">
+        <img src="Images/ME/Bicycle.webp" alt="me" loading="lazy" />
+      </a>
+      <h2>ABOUT</h2>
+      <p>Design and Making + Contact info </p>
+    </section>
+  
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Nemo Anderson. All rights reserved.</p>
+  </footer>
+
+<!-- CMYK SCRIPT -->
+  <script>
+    const cyan = document.querySelector('.cyan');
+    const magenta = document.querySelector('.magenta');
+    const yellow = document.querySelector('.yellow');
+
+    function updateGrid() {
+      const scrollY = window.scrollY;
+
+      // Parallax motion
+      cyan.style.backgroundPosition = `0px ${scrollY * 0.3}px`;
+      magenta.style.backgroundPosition = `0px ${scrollY * 0.5}px`;
+      yellow.style.backgroundPosition = `0px ${scrollY * 0.7}px`;
+
+      const t = scrollY * 0.005;
+
+      // Line thickness
+      const cyanBase = 4 * Math.max(0, Math.sin(t - Math.PI/2));
+      const magentaBase = 6 * Math.max(0, Math.sin(t * 1.333 - Math.PI/2 + Math.PI / 3));
+      const yellowBase = 8 * Math.max(0, Math.cos(t * 0.666 - Math.PI/2 - Math.PI / 6));
+
+      document.documentElement.style.setProperty('--cyan-line', `${cyanBase}px`);
+      document.documentElement.style.setProperty('--magenta-line', `${magentaBase}px`);
+      document.documentElement.style.setProperty('--yellow-line', `${yellowBase}px`);
+    }
+
+    window.addEventListener('scroll', updateGrid);
+    updateGrid();
+  </script>
+
+</body>
+</html>
