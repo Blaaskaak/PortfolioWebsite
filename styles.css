@@ -147,12 +147,16 @@ nav .left a.active {
   font-size: 1.5rem;
   margin: 1rem 0 0.5rem 0;
   font-weight: 400;
-  color: #000;
+  color: #000000;
+}
+.section-card a {
+  text-decoration: none; /* removes underline from all links inside .section-card */
+  color: inherit;        /* keeps the text color the same as the surrounding text */
 }
 
 .section-card p {
   padding: 0 1rem 1.5rem 1rem;
-  color: #555;
+  color: #000000;
   font-size: 0.95rem;
 }
 
