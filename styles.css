@@ -136,7 +136,7 @@ nav .left a.active {
 }
 
 .section-card img {
-  height: 250px;          /* set the same height for all images */
+  height: 400px;          /* set the same height for all images */
   width: 100%;            /* make them fill the container width */
   object-fit: cover;      /* crop/scale images to fill height nicely */
   display: block;         /* removes bottom whitespace under images */
