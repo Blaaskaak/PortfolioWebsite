@@ -81,34 +81,39 @@ nav .left a.active {
 }
 
 
-/*      RESPONSIVE NAV      */
-
-
-@media (max-width: 800px) {
-  nav {
-    height: 60px;
-  }
-
-  nav .left a,
-  nav .right a {
-    font-size: 28px;
-    margin-left: 40px;
-    margin-right: 40px;
-  }
-}
-
+/* Responsive adjustments */
 @media (max-width: 500px) {
   nav {
-    height: 55px;
+    flex-direction: column; /* stack left and right sections */
+    align-items: center;
+    height: auto; /* let it grow with content */
+    position: static; /* remove sticky */
+    width: 100%; /* full width */
+    margin-left: 0; /* reset previous offset */
+    background-color: rgba(255, 255, 255, 1); /* ensure white background covers full width */
+    box-sizing: border-box; /* include padding in width */
+    padding: 10px 0; /* optional: add vertical padding */
+  }
+
+  nav .left,
+  nav .right {
+    width: 100%;
+    text-align: center;
+    margin: 5px 0; /* spacing between stacked sections */
   }
 
   nav .left a,
   nav .right a {
     font-size: 22px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 70px; /* keep original margins */
+    margin-right: 70px;
+  }
+
+  nav .right a {
+    display: block; /* stack each link vertically */
   }
 }
+
 /* ======================== HOME PAGE ============================ */
 
 /* MAIN SECTIONS */
@@ -441,6 +446,20 @@ footer {
 .projects-container .project4 .project-title { justify-content: flex-start; display: flex; }
 .projects-container .project6 .project-title { justify-content: flex-start; display: flex; }
 .projects-container .project7 .project-title { justify-content: flex-start; display: flex; }
+/* Stack projects vertically on mobile */
+@media (max-width: 500px) {
+  .projects-container {
+    display: block; /* switch from grid to block layout */
+  }
+
+  .projects-container > div {
+    grid-area: unset; /* remove previous grid positioning */
+    margin-left: 10px; /* keep your original margins */
+    margin-right: 10px;
+    margin-top: var(--ruimteboven); /* keep spacing */
+    padding-top: 20px;
+  }
+}
 
 /* ===================== DAYBED CONTENT PAGE ===================== */
 
@@ -734,6 +753,136 @@ figcaption {
 
 
 
+/* ================= MOBILE ADJUSTMENTS ================= */
+/* ================= UNIVERSAL MOBILE PROJECT TITLE ================= */
+@media (max-width: 500px) {
+
+  /* Make all project containers stack vertically */
+  .first-section-daybed,
+  .first-section,
+  .first-section-ledtower,
+  .second-section,
+  .process-container-daybed,
+  .process-container,
+  .coexist-container,
+  .projects-container,
+  .endeavours-list {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Force all project titles to the top */
+  .project-title,
+  .project-title-daybed,
+  .coexist-project-title,
+  .endeavour-title {
+    width: 100%;
+    font-size: 28px;
+    text-align: center;
+    margin: 20px 0;
+    order: 0; /* ensures title comes first */
+  }
+
+  /* Images stacked below title */
+  .first-section-daybed img,
+  .project-image-daybed,
+  .project-image-person,
+  .first-section img,
+  .first-section-ledtower img,
+  .second-section img,
+  .process-image1 img,
+  .process-image2 img,
+  .process-image3 img,
+  .project-image,
+  .coexist-container img,
+  .endeavour-gallery img {
+    width: 100%;
+    height: auto;
+    margin: 10px 0 0 0;
+    order: 1;
+  }
+
+  /* Text blocks below images */
+  .project-info,
+  .process-text,
+  .process-text-daybed,
+  .coexist-project-summary,
+  .coexist-process-text,
+  .endeavour-description {
+    width: 95%;
+    max-width: 600px;
+    text-align: center;
+    margin: 10px auto;
+    order: 2;
+  }
+
+  /* Videos below everything */
+  .video-row,
+  .video-wasteman {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .video-container,
+  .video-container-wasteman {
+    width: 95%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    margin: 20px auto;
+  }
+
+  .project-video,
+  .project-video-wasteman {
+    width: 100%;
+    height: 100%;
+  }
+
+  figcaption {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+
+  /* Ensure gallery images in Endeavours are slightly wider */
+  .endeavour-gallery {
+    grid-template-columns: repeat(1, 1fr) !important;
+    grid-auto-rows: 200px;
+    gap: 15px;
+  }
+}
+@media (max-width: 500px) {
+  .project-title,
+  .project-title-daybed,
+  .coexist-project-title,
+  .endeavour-title {
+    position: absolute;
+    top: -50px;        /* distance from top of screen */
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 28px;
+    z-index: 9999;
+    background: rgba(255,255,255,0.9); /* optional for readability */
+  }
+
+  /* Push down all other content so it doesn’t overlap the title */
+  .first-section-daybed,
+  .first-section,
+  .first-section-ledtower,
+  .second-section,
+  .process-container-daybed,
+  .process-container,
+  .coexist-container,
+  .projects-container,
+  .endeavours-list {
+    margin-top: 70px; /* same height as the title */
+  }
+  .coexist1 {
+    padding-top: 40px; /* increase space above the image */
+  }
+}
+
 
 /*======================= COEXIST CONTENT PAGE ====================*/
 /* grid settings */
@@ -1013,6 +1162,129 @@ figcaption {
   align-self: flex-end;
   color: #000;
 }
+/* --- MOBILE ADJUSTMENTS FOR COEXIST PAGE --- */
+@media (max-width: 500px) {
+  /* Main container: remove grid layout */
+  .coexist-container {
+    display: block;
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  /* Project boxes, titles, summaries, process text */
+  .coexist-project-title,
+  .coexist-project-summary,
+  .coexist-process-text,
+  .coexist1,
+  .coexist2,
+  .coexist3,
+  .coexist4,
+  .coexist5,
+  .coexist6,
+  .coexist7 {
+    grid-area: unset; /* remove previous grid placement */
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 40px; /* keep spacing */
+  }
+
+  /* Titles centered and full width */
+  .coexist-project-title,
+  .coexist-process-header,
+  .coexist-video-header,
+  .Coexist-exhibitions-header {
+    text-align: center;
+    font-size: 28px;
+    margin-top: 60px;
+    margin-bottom: 20px;
+  }
+
+  /* Summary and process text */
+  .coexist-project-summary,
+  .coexist-process-text {
+    width: 100%;
+    text-align: center;
+    padding: 0 5px;
+  }
+
+  /* Images: full width, auto height */
+  .coexist-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+
+  /* Adjust video container */
+  .coexist-video-container {
+    width: 95%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    margin: 0 auto 30px auto;
+  }
+
+  .coexist-video {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Exhibitions: full width */
+  .Mauritshuis-Pictures1,
+  .Paris-Pictures1,
+  .Japan-Pictures1,
+  .ARS-Pictures1 {
+    grid-area: unset;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+    margin-bottom: 30px;
+  }
+
+  /* Exhibition text centered */
+  .Mauritshuis,
+  .Paris,
+  .Japan,
+  .ARS,
+  .Mauritshuis-Header,
+  .Paris-Header,
+  .Japan-Header,
+  .ARS-Header,
+  .Mauritshuis-Caption,
+  .Paris-Caption,
+  .Japan-Caption,
+  .ARS-Caption,
+  .Mauritshuis-Description,
+  .Paris-Description,
+  .Japan-Description,
+  .ARS-Description {
+    text-align: center;
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  /* Process images smaller height on mobile */
+  .coexist3 img,
+  .coexist4 img {
+    height: auto;
+  }
+
+  .coexist6 img,
+  .coexist7 img {
+    height: auto;
+  }
+
+  /* More info at bottom centered */
+  .more-info {
+    grid-area: unset;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
 
 
 /* ==================== ENDEAVOURS STRUCTURE ===================== */
@@ -1091,21 +1363,56 @@ figcaption {
   opacity: 1;
 }
 
-/* ==================== RESPONSIVE ===================== */
-
-@media (max-width: 800px) {
-  .endeavour-gallery {
-    grid-template-columns: repeat(2, 1fr) !important;
-    grid-auto-rows: 180px;
-  }
-}
-
+/* Mobile adjustments for Endeavours page */
 @media (max-width: 500px) {
+  /* Reduce padding for small screens */
+  .endeavours-list {
+    padding: 0 10px 20px; /* smaller padding so images can be wider */
+    gap: 60px; /* vertical spacing between endeavours */
+  }
+
+  /* Titles and descriptions */
+  .endeavour-title {
+    font-size: 28px;
+    text-align: center;
+    padding: 5px 0;
+  }
+
+  .endeavour-description {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  /* Gallery: single column, wider images */
   .endeavour-gallery {
-    grid-template-columns: repeat(1, 1fr) !important;
-    grid-auto-rows: 200px;
+    grid-template-columns: 1fr !important; /* single column */
+    grid-auto-rows: auto;
+    gap: 10px;
+    width: 100%; /* full width of container */
+  }
+
+  .endeavour-gallery img {
+    width: 100%; /* make image span full width */
+    height: auto;
+  }
+
+  /* Stack description above images */
+  .endeavour {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .endeavour-description {
+    order: 1;
+  }
+
+  .endeavour-gallery {
+    order: 2;
   }
 }
+
 /* ===================== MANUFACTURING PAGE CSS ===================== */
 .intro-text-manufacturing {
   max-width: 450px;
@@ -1249,4 +1556,82 @@ figcaption {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+/* --- MOBILE ADJUSTMENTS --- */
+@media (max-width: 500px) {
+  /* Intro text */
+  .intro-text-manufacturing {
+    max-width: 90%;
+    margin: 20px auto 0 auto; /* center the intro text */
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* Headers */
+  .manufacturing-header,
+  .manufacturing-subheader {
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  /* Timeline */
+  .timeline {
+    width: 95%;
+    padding: 10px 0;
+  }
+
+  /* Stack timeline items */
+  .timeline-item {
+    flex-direction: column !important; /* vertical stack */
+    align-items: center;
+    margin-bottom: 50px; /* smaller spacing */
+  }
+
+  /* Description text full width */
+  .timeline-item.left .skill-text,
+  .timeline-item.right .skill-text {
+    width: 90%;
+    text-align: center !important;
+    margin: 10px 0;
+    padding: 10px;
+  }
+
+  /* Images full width */
+  .timeline-item.left .skill-images,
+  .timeline-item.right .skill-images {
+    width: 90%;
+    padding: 10px 0;
+  }
+
+  /* Skill images single column */
+  .skill-images {
+    grid-template-columns: 1fr !important;
+    grid-auto-rows: auto;
+    gap: 10px;
+  }
+
+  .skill-images img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Center text */
+  .skill-title,
+  .skill-description {
+    text-align: center !important;
+  }
+
+  /* Reorder: description first, images second */
+  .timeline-item {
+    flex-direction: column-reverse !important;
+  }
+
+  .timeline-item .skill-text {
+    order: 2;
+  }
+
+  .timeline-item .skill-images {
+    order: 1;
+  }
 }
